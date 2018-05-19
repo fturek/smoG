@@ -1,5 +1,8 @@
 package com.slowiak.turek.smoG.model;
 
+import lombok.Data;
+
+@Data
 public class Station {
     private final int id;
     private final String stationName;
