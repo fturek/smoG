@@ -11,8 +11,6 @@ import javax.persistence.*;
 public class Commune {
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "commune_name")
     private String communeName;
 

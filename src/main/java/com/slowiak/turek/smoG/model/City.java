@@ -17,4 +17,8 @@ public class City {
     @Column(name = "name")
     private String name;
 
+    @OneToOne
+    @JoinColumn(name = "commune")
+    private Commune commune;
+
 }
