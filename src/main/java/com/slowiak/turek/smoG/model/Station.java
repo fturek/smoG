@@ -12,20 +12,21 @@ public class Station {
     @Id
     @Column(name = "station_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final int id;
+    private int id;
 
     @Column(name = "station_name")
-    private final String stationName;
+    private String stationName;
 
     @Column(name = "gegr_lat")
-    private final String gegrLat;
+    private String gegrLat;
 
     @Column(name = "gegr_lon")
-    private final String gegrLon;
+    private String gegrLon;
 
-    @OneToMany(mappedBy = "city_id")
-    private final City city;
+    @OneToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
     @Column(name = "address_street")
-    private final String addressStreet;
+    private String addressStreet;
 }

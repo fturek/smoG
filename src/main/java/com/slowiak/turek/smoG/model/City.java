@@ -6,16 +6,15 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "city")
+@Table(name = "cities")
 public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final int id;
+    @Column(name = "city_id")
+    private int id;
 
     @Column(name = "name")
-    private final String name;
+    private String name;
 
-    @Column(name = "commune")
-    private final Commune commune;
 }

@@ -1,22 +1,24 @@
 package com.slowiak.turek.smoG.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table( name = "communes")
+@Table(name = "communes")
 public class Commune {
 
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "commune_name")
-    private final String communeName;
+    private String communeName;
 
     @Column(name = "district_name")
-    private final String districtName;
+    private String districtName;
 
     @Column(name = "province_name")
-    private final String provinceName;
+    private String provinceName;
 }
