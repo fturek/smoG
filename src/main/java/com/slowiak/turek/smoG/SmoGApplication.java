@@ -36,6 +36,6 @@ public class SmoGApplication {
             System.out.println("start");
             stationsRepository.saveAll(stationsFromAPIList);
             System.out.println("stop");
-    },10, TimeUnit.SECONDS);
+    },1, TimeUnit.DAYS);
     }
 }
