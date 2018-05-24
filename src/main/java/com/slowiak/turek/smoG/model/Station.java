@@ -11,7 +11,7 @@ public class Station {
 
     @Id
     @Column(name = "station_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "station_name")
@@ -23,7 +23,7 @@ public class Station {
     @Column(name = "gegr_lon")
     private String gegrLon;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "city_id")
     private City city;
 

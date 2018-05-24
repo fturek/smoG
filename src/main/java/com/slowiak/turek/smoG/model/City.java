@@ -10,14 +10,14 @@ import javax.persistence.*;
 public class City {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id")
     private int id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "commune")
     private Commune commune;
 
