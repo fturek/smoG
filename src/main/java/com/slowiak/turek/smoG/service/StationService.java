@@ -2,7 +2,7 @@ package com.slowiak.turek.smoG.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.slowiak.turek.smoG.constant.URLConstants;
+import com.slowiak.turek.smoG.constant.Constants;
 import com.slowiak.turek.smoG.model.Station;
 import com.slowiak.turek.smoG.utils.JSONReader;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class StationService {
         JSONReader jsonReader = new JSONReader();
         List<Station> stationList = null;
         try {
-            String jsonText = jsonReader.readJsonFromUrl(URLConstants.allStations);
+            String jsonText = jsonReader.readJsonFromUrl(Constants.allStationsURL);
 
             ObjectMapper objectMapper = new ObjectMapper();
             stationList = objectMapper.readValue(jsonText, new TypeReference<List<Station>>() {
