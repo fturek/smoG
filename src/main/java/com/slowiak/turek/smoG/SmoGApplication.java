@@ -26,16 +26,17 @@ public class SmoGApplication {
         stationsRepository.saveAll(stationsFromAPI);
         */
 
+//        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(Constants.threadAmmount);
+//        scheduledExecutorService.scheduleAtFixedRate(() -> {
+//            System.out.println("schedule");
+//            StationService stationService = (StationService) ctx.getBean("stationService");
+//            StationsRepository stationsRepository = (StationsRepository) ctx.getBean("stationsRepository");
+//            List<Station> stationsFromAPIList = stationService.getStationsFromAPI();
+//            System.out.println("start");
+//            stationsRepository.saveAll(stationsFromAPIList);
+//            System.out.println("stop");
+//        }, Constants.allStationsDelayDays, Constants.allStationsPeriodDays, TimeUnit.DAYS);
 
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(Constants.threadAmmount);
-        scheduledExecutorService.schedule(() -> {
-            System.out.println("schedule");
-            StationService stationService = (StationService) ctx.getBean("stationService");
-            StationsRepository stationsRepository = (StationsRepository) ctx.getBean("stationsRepository");
-            List<Station> stationsFromAPIList = stationService.getStationsFromAPI();
-            System.out.println("start");
-            stationsRepository.saveAll(stationsFromAPIList);
-            System.out.println("stop");
-    },1, TimeUnit.DAYS);
+
     }
 }
