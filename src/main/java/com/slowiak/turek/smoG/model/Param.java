@@ -1,5 +1,6 @@
 package com.slowiak.turek.smoG.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "params")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Param {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
