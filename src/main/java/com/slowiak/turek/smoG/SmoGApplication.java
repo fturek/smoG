@@ -1,8 +1,10 @@
 package com.slowiak.turek.smoG;
 
 import com.slowiak.turek.smoG.constant.Constants;
+import com.slowiak.turek.smoG.model.Sensor;
 import com.slowiak.turek.smoG.model.Station;
 import com.slowiak.turek.smoG.repository.StationsRepository;
+import com.slowiak.turek.smoG.service.SensorService;
 import com.slowiak.turek.smoG.service.StationService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,6 +39,8 @@ public class SmoGApplication {
 //            System.out.println("stop");
 //        }, Constants.allStationsDelayDays, Constants.allStationsPeriodDays, TimeUnit.DAYS);
 
-
+        // For sensor service test
+//        SensorService sensorService = (SensorService) ctx.getBean("sensorService");
+//        List<Sensor> sensorsFromAPI = sensorService.getSensorsFromAPI();
     }
 }
