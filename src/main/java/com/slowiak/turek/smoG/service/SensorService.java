@@ -35,7 +35,7 @@ public class SensorService {
                     System.out.println("\t" + sensor.getId() + " " + sensor.getStationId() + " "
                             + sensor.getParam().getParamCode() + " "
                             + sensor.getParam().getParamName() + " "
-                            + sensor.getParam().getId());
+                            + sensor.getParam().getIdParam());
                 }
             }
         } catch (IOException e) {
