@@ -1,9 +1,12 @@
 package com.slowiak.turek.smoG;
 
 import com.slowiak.turek.smoG.constant.Constants;
+import com.slowiak.turek.smoG.model.HistoricalData;
 import com.slowiak.turek.smoG.model.Sensor;
 import com.slowiak.turek.smoG.model.Station;
+import com.slowiak.turek.smoG.repository.HistoricalDataRepository;
 import com.slowiak.turek.smoG.repository.StationsRepository;
+import com.slowiak.turek.smoG.service.HistoricalDataService;
 import com.slowiak.turek.smoG.service.SensorService;
 import com.slowiak.turek.smoG.service.StationService;
 import org.springframework.boot.SpringApplication;
@@ -42,5 +45,15 @@ public class SmoGApplication {
         // For sensor service test
 //        SensorService sensorService = (SensorService) ctx.getBean("sensorService");
 //        List<Sensor> sensorsFromAPI = sensorService.getSensorsFromAPI();
+
+//         For sensor service test
+        HistoricalDataService historicalDataService = (HistoricalDataService) ctx.getBean("historicalDataService");
+        List<HistoricalData> historcalList = historicalDataService.getHistoricalData();
+
+        historcalList.forEach(historicalData -> System.out.println(historicalData.getId() + " "
+                + historicalData.getKey() + " " + historicalData.getValues().get(0).getValue() + " sensorID " + historicalData.getSensor_id()));
+
+        HistoricalDataRepository historicalDataRepository = (HistoricalDataRepository) ctx.getBean("historicalDataRepository");
+        historicalDataRepository.saveAll(historcalList);
     }
 }

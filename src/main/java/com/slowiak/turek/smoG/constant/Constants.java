@@ -4,6 +4,7 @@ public class Constants {
 
     public static String allStationsURL= "http://api.gios.gov.pl/pjp-api/rest/station/findAll";
     public static String sensorsWithStationIdURL= "http://api.gios.gov.pl/pjp-api/rest/station/sensors/";
+    public static String historicalDataURL = "http://api.gios.gov.pl/pjp-api/rest/data/getData/";
     public static long allStationsDelayDays = 0;
     public static long allStationsPeriodDays = 1;
     public static int threadAmmount = 5;
