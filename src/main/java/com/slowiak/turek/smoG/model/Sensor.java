@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "measuring_sensors")
 public class Sensor {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sensor_id")
     private int id;
 
