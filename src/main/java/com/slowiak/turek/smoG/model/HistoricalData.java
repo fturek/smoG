@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -15,15 +17,15 @@ public class HistoricalData {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "sensor_id")
-    private int sensor_id;
+    private Integer sensor_id;
 
-    @Column(name = "key")
+    @Column(name = "my_key")
     private String key;
 
     @Embedded
-    @ElementCollection(targetClass = Values.class)
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Values> values;
 }

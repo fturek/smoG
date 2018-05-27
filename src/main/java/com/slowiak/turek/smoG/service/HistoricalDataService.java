@@ -27,9 +27,8 @@ public class HistoricalDataService {
         JSONReader jsonReader = new JSONReader();
         List<HistoricalData> historicalData = new ArrayList<>();
 
-
         List<Sensor> sensorList = sensorRepository.findAll();
-        List<Integer> sensorListIds = sensorList.stream().map(sensor -> sensor.getId()).collect(Collectors.toList());
+        List<Integer> sensorListIds = sensorList.stream().map(Sensor::getId).collect(Collectors.toList());
 
         for (Integer sensorId : sensorListIds) {
             try {
@@ -47,6 +46,4 @@ public class HistoricalDataService {
 
         return historicalData;
     }
-
-    ;
 }
