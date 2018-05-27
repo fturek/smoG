@@ -25,20 +25,18 @@ public class SensorService {
             List<Station> stationList = objectMapper.readValue(stations, new TypeReference<List<Station>>() {
             });
             System.out.println(stationList.size());
-//            Thread.sleep(5000);
             for (Station s : stationList) {
                 System.out.println("Downloading sensors for station with id: " + s.getId());
-                if (s.getId() != 14) {
-                    String stationSensors = jsonReader.readJsonFromUrl(Constants.sensorsWithStationIdURL + s.getId());
-                    List<Sensor> sensorsFromStation = objectMapper.readValue(stationSensors, new TypeReference<List<Sensor>>() {
-                    });
-                    sensorList.addAll(sensorsFromStation);
-                    for (Sensor sensor : sensorsFromStation) {
-                        System.out.println("\t" + sensor.getId() + " " + sensor.getStationId());
-                    }
-//                    Thread.sleep(5000);
+                String stationSensors = jsonReader.readJsonFromUrl(Constants.sensorsWithStationIdURL + s.getId());
+                List<Sensor> sensorsFromStation = objectMapper.readValue(stationSensors, new TypeReference<List<Sensor>>() {
+                });
+                sensorList.addAll(sensorsFromStation);
+                for (Sensor sensor : sensorsFromStation) {
+                    System.out.println("\t" + sensor.getId() + " " + sensor.getStationId() + " "
+                            + sensor.getParam().getParamCode() + " "
+                            + sensor.getParam().getParamName() + " "
+                            + sensor.getParam().getId());
                 }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
