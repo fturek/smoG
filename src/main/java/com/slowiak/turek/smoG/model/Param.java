@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Param {
     @Id
     @Column(name = "param_id")
-    private int id;
+    private int idParam;
 
     @Column(name = "param_name")
     private String paramName;
