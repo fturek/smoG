@@ -11,7 +11,6 @@ import javax.persistence.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Param {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "param_id")
     private int id;
 

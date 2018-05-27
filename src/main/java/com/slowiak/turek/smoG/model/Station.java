@@ -11,7 +11,6 @@ public class Station {
 
     @Id
     @Column(name = "station_ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "station_name")
