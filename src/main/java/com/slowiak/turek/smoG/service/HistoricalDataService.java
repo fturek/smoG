@@ -45,6 +45,7 @@ public class HistoricalDataService {
                     historicalData.setKey(historicalDataTemplate.getKey());
                     historicalData.setDate(values.getDate());
                     historicalData.setValue(values.getValue());
+                    historicalData.setSensor_id(sensorId);
                     historicalDataList.add(historicalData);
                 }
 
