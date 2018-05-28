@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +26,9 @@ public class HistoricalData {
     @Column(name = "my_key")
     private String key;
 
-    @Embedded
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Values> values;
+    @Column(name = "my_date")
+    private String date;
+
+    @Column(name = "my_value")
+    private BigDecimal value;
 }

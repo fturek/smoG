@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slowiak.turek.smoG.constant.Constants;
 import com.slowiak.turek.smoG.model.HistoricalData;
+import com.slowiak.turek.smoG.model.HistoricalDataTemplate;
 import com.slowiak.turek.smoG.model.Sensor;
+import com.slowiak.turek.smoG.model.Values;
 import com.slowiak.turek.smoG.repository.SensorRepository;
 import com.slowiak.turek.smoG.utils.JSONReader;
 import org.springframework.stereotype.Service;
@@ -25,7 +27,7 @@ public class HistoricalDataService {
 
     public List<HistoricalData> getHistoricalData() {
         JSONReader jsonReader = new JSONReader();
-        List<HistoricalData> historicalData = new ArrayList<>();
+        List<HistoricalData> historicalDataList = new ArrayList<>();
 
         List<Sensor> sensorList = sensorRepository.findAll();
         List<Integer> sensorListIds = sensorList.stream().map(Sensor::getId).collect(Collectors.toList());
@@ -35,15 +37,23 @@ public class HistoricalDataService {
                 ObjectMapper objectMapper = new ObjectMapper();
                 String jsonText = jsonReader.readJsonFromUrl(Constants.historicalDataURL + sensorId);
 
-                HistoricalData temporaryHistoricalData = objectMapper.readValue(jsonText, new TypeReference<HistoricalData>() {});
-                temporaryHistoricalData.setSensor_id(sensorId);
-                historicalData.add(temporaryHistoricalData);
+                HistoricalDataTemplate historicalDataTemplate = objectMapper.readValue(jsonText, new TypeReference<HistoricalData>() {});
+                List<Values> valuesList = historicalDataTemplate.getValues();
+
+                for ( Values values : valuesList ){
+                    HistoricalData historicalData = new HistoricalData();
+                    historicalData.setKey(historicalDataTemplate.getKey());
+                    historicalData.setDate(values.getDate());
+                    historicalData.setValue(values.getValue());
+                    historicalDataList.add(historicalData);
+                }
+
                 break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        return historicalData;
+        return historicalDataList;
     }
 }

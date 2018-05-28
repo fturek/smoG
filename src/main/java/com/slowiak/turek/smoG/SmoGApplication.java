@@ -51,9 +51,9 @@ public class SmoGApplication {
         List<HistoricalData> historcalList = historicalDataService.getHistoricalData();
 
         historcalList.forEach(historicalData -> System.out.println(historicalData.getId() + " "
-                + historicalData.getKey() + " " + historicalData.getValues().get(0).getValue() + " sensorID " + historicalData.getSensor_id()));
+                + historicalData.getKey() + " " + historicalData.getValue() + " " + historicalData.getSensor_id()));
 
-        HistoricalDataRepository historicalDataRepository = (HistoricalDataRepository) ctx.getBean("historicalDataRepository");
-        historicalDataRepository.saveAll(historcalList);
+//        HistoricalDataRepository historicalDataRepository = (HistoricalDataRepository) ctx.getBean("historicalDataRepository");
+//        historicalDataRepository.saveAll(historcalList);
     }
 }
