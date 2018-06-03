@@ -37,7 +37,7 @@ public class HistoricalDataService {
                 ObjectMapper objectMapper = new ObjectMapper();
                 String jsonText = jsonReader.readJsonFromUrl(Constants.historicalDataURL + sensorId);
 
-                HistoricalDataTemplate historicalDataTemplate = objectMapper.readValue(jsonText, new TypeReference<HistoricalData>() {});
+                HistoricalDataTemplate historicalDataTemplate = objectMapper.readValue(jsonText, new TypeReference<HistoricalDataTemplate>() {});
                 List<Values> valuesList = historicalDataTemplate.getValues();
 
                 for ( Values values : valuesList ){
@@ -49,7 +49,8 @@ public class HistoricalDataService {
                     historicalDataList.add(historicalData);
                 }
 
-                break;
+                System.out.println("dupa");
+                //break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
