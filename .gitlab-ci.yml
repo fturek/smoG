@@ -27,7 +27,7 @@ pages:
     paths:
       - public
 
-heroku-deploy:
+heroku-deploy2:
   image: docker
   stage: deploy
   variables:
@@ -35,6 +35,6 @@ heroku-deploy:
   services:
     - docker:dind
   script:
-    - docker build --build-arg JAR_FILE=build/libs/smog-0.0.1-SNAPSHOT.jar --tag registry.heroku.com/jwzp-smog/web .
+    - docker build --build-arg JAR_FILE=build/libs/smog-0.0.1-SNAPSHOT.jar --tag registry.heroku.com/jwzp-smog.
     - docker login --username=filippturek@gmail.com --password=$HEROKU_API_KEY registry.heroku.com
-    - docker push registry.heroku.com/jwzp-smog/web
+    - docker push registry.heroku.com/jwzp-smog
